@@ -1,3 +1,5 @@
+<% partial("app/resources/todos/views/_form.jl.html") %>
+
 <% if isempty(todos) %>
   <p>Nothing to do!</p>
 <% else %>
@@ -16,4 +18,4 @@
 <% end %>
 
 <% partial("app/resources/todos/views/_messages.jl.html") %>
-<% partial("app/resources/todos/views/_form.jl.html") %>
+<% partial("app/resources/todos/views/_filters.jl.html") %>
