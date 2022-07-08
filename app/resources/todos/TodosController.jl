@@ -10,8 +10,20 @@ module TodosController
   using ViewHelper
 
   function index()
-    html(:todos, :index, todos = all(Todo))
-  end
+    notdonetodos = count(Todo, completed = false)
+    donetodos = count(Todo, completed = true)
+    alltodos = notdonetodos + donetodos
+   
+    todos = if params(:filter, "") == "done"
+      find(Todo, completed = true)
+    elseif params(:filter, "") == "notdone"
+      find(Todo, completed = false)
+    else
+      all(Todo)
+    end
+   
+    html(:todos, :index; todos, notdonetodos, donetodos, alltodos, ViewHelper.active)
+  end  
 
   function create()
     todo = Todo(todo = params(:todo))		 # 1
