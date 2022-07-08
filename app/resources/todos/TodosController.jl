@@ -7,6 +7,7 @@ module TodosController
   using SearchLight.Validation
   using Genie.Renderers.Json
   using Genie.Requests
+  using ViewHelper
 
   function index()
     html(:todos, :index, todos = all(Todo))
